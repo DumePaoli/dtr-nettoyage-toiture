@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.dtr-nettoyage-toiture.fr/sitemap.xml
