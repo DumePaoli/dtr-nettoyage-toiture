@@ -1685,19 +1685,57 @@
       if (e.target === this) closeContact();
     });
 
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
       const nom     = this.nom.value.trim();
       const email   = this.email.value.trim();
       const tel     = this.tel.value.trim();
       const sujet   = this.sujet.value.trim() || 'Demande de devis';
       const message = this.message.value.trim();
-      const body    = encodeURIComponent(
-        `Nom : ${nom}\nTéléphone : ${tel}\n\n${message}`
-      );
-      window.location.href =
-        `mailto:mail@dtr-nettoyage-toiture.fr?subject=${encodeURIComponent(sujet)}&body=${body}`;
-      setTimeout(closeContact, 800);
+
+      // Validation simple
+      if (!nom || !email || !message) {
+        alert('Merci de remplir les champs obligatoires (Nom, Email, Message).');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Envoi en cours…';
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: '8ffe2bdb-da33-428f-af37-a77d10bee15a',
+            subject: `[DTR Site] ${sujet}`,
+            from_name: nom,
+            email: email,
+            message: `Nom : ${nom}\nEmail : ${email}\nTéléphone : ${tel}\nSujet : ${sujet}\n\n${message}`
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          btn.innerHTML = '✅ Message envoyé !';
+          btn.style.background = 'linear-gradient(135deg,#2a7a2a,#3aaa3a)';
+          this.reset();
+          setTimeout(() => {
+            closeContact();
+            btn.disabled = false;
+            btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Envoyer le message';
+            btn.style.background = '';
+          }, 2500);
+        } else {
+          throw new Error('Erreur serveur');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = '❌ Erreur — réessayez';
+        setTimeout(() => {
+          btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Envoyer le message';
+        }, 3000);
+      }
     });
 
     // ── SHINY BUTTON ENGINE ──────────────────────────────────────────
