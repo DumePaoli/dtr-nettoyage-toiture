@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DTR Nettoyage Toiture – Nettoyage, Démoussage, Hydrofuge</title>
+  <meta name="description" content="DTR Nettoyage Toiture : spécialiste du nettoyage de toiture et de façade, traitement anti-mousse, protection hydrofuge. Devis gratuit & sans engagement. -10% sur la première intervention." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --gold:        #C8922A;
+      --gold-light:  #E8B84B;
+      --gold-bright: #F5C842;
+      --gold-dark:   #9A6E1A;
+      --bg-dark:     #131313;
+      --bg-card:     #1C1C1C;
+      --bg-section:  #181818;
+      --text-white:  #F5F0E8;
+      --text-muted:  #A89880;
+      --border-gold: rgba(200, 146, 42, 0.35);
+      --gradient-gold: linear-gradient(135deg, #C8922A 0%, #F5C842 50%, #C8922A 100%);
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    h1, h2, h3, h4 { font-family: 'Cinzel', serif; letter-spacing: 0.04em; }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .gold-text { color: var(--gold-light); }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border-gold);
+      border-radius: 30px;
+      padding: 4px 16px;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      color: var(--text-white);
+      margin-bottom: 14px;
+    }
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      font-weight: 400;
+    }
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: var(--gradient-gold);
+      border-radius: 2px;
+      margin: 18px 0 32px;
+    }
+
+    /* ===== ANIMATIONS KEYFRAMES ===== */
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+    @keyframes ctaGlow {
+      0%,100% { box-shadow: 0 4px 20px rgba(200,146,42,0.45), 0 0 0 0 rgba(200,146,42,0.3); }
+      50%      { box-shadow: 0 8px 36px rgba(200,146,42,0.75), 0 0 0 14px rgba(200,146,42,0); }
+    }
+    @keyframes floatPhone {
+      0%,100% { transform: translateY(0) scale(1); }
+      50%      { transform: translateY(-5px) scale(1.04); }
+    }
+    @keyframes rippleOut {
+      0%   { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+    @keyframes slideInLeft {
+      from { opacity:0; transform: translateX(-40px); }
+      to   { opacity:1; transform: translateX(0); }
+    }
+    @keyframes slideInUp {
+      from { opacity:0; transform: translateY(30px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity:0; }
+      to   { opacity:1; }
+    }
+
+    /* ===== SHINY BUTTONS (ShinyButton-inspired – vanilla CSS + JS) ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 36px;
+      border-radius: 6px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s ease;
+      z-index: 0;
+      will-change: transform;
+    }
+
+    /* ── PRIMARY : gold background + white shine sweep ── */
+    .btn-primary {
+      background: linear-gradient(135deg, #9A6E1A 0%, #C8922A 30%, #F5C842 60%, #C8922A 85%, #9A6E1A 100%);
+      color: #131313;
+    }
+    .btn-primary:active { transform: scale(0.95) !important; transition: transform 0.1s !important; }
+
+    /* White shine sweep — driven by JS --x variable */
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        -75deg,
+        transparent                   calc(var(--x, 100%) +  0%),
+        rgba(255,255,255,0.55)        calc(var(--x, 100%) + 12%),
+        rgba(255,255,255,0.18)        calc(var(--x, 100%) + 18%),
+        transparent                   calc(var(--x, 100%) + 28%)
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Ripple wave on click */
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      width: 0; height: 0;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%) scale(0);
+      opacity: 0;
+    }
+    .btn-primary.rippling::after {
+      animation: btnRipple 0.55s ease-out forwards;
+    }
+    @keyframes btnRipple {
+      0%   { width:0;     height:0;     opacity:0.7; transform:translate(-50%,-50%) scale(0); }
+      100% { width:340px; height:340px; opacity:0;   transform:translate(-50%,-50%) scale(1); }
+    }
+
+    /* ── OUTLINE : dark glass + animated shiny gold border ── */
+    .btn-outline {
+      background: rgba(13,13,13,0.72);
+      backdrop-filter: blur(10px);
+      color: var(--gold-light);
+      border: none;
+      padding: 14px 35px;
+    }
+    /* Shiny gold border — driven by JS --x */
+    .btn-outline::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.5px;
+      background: linear-gradient(
+        -75deg,
+        rgba(200,146,42,0.2)  calc(var(--x, 100%) +  0%),
+        rgba(245,200,66,0.95) calc(var(--x, 100%) + 14%),
+        rgba(255,235,140,1)   calc(var(--x, 100%) + 20%),
+        rgba(200,146,42,0.2)  calc(var(--x, 100%) + 34%)
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    /* Subtle gold sheen on text area */
+    .btn-outline::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        -75deg,
+        transparent              calc(var(--x, 100%) +  0%),
+        rgba(255,210,80,0.12)    calc(var(--x, 100%) + 14%),
+        rgba(255,230,120,0.06)   calc(var(--x, 100%) + 20%),
+        transparent              calc(var(--x, 100%) + 34%)
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    .btn-outline:hover  { background: rgba(200,146,42,0.12); }
+    .btn-outline:active { transform: scale(0.95) !important; transition: transform 0.1s !important; }
+
+    /* Boutons sans animation (devis gratuit nav + téléphone) */
+    .btn-static::before,
+    .btn-static::after { display: none !important; }
+    a.btn[href^="tel:"]::before,
+    a.btn[href^="tel:"]::after { display: none !important; }
+    /* Supprime les anneaux pulsants autour des boutons Devis Gratuit et téléphone */
+    .btn-hero-cta .ring,
+    .cta-phone-wrap .ring { display: none !important; }
+
+    /* ===== STICKY PHONE CTA (mobile) ===== */
+    .sticky-phone {
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--gradient-gold);
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(200,146,42,0.5);
+      animation: floatPhone 3s ease-in-out infinite;
+    }
+    .sticky-phone::before,
+    .sticky-phone::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(200,146,42,0.3);
+      animation: rippleOut 2s ease-out infinite;
+    }
+    .sticky-phone::after { animation-delay: 1s; }
+    .sticky-phone svg { width: 26px; height: 26px; stroke: #131313; fill: none; position: relative; z-index: 1; }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 18px 0;
+      background: rgba(13, 13, 13, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-gold);
+      transition: padding 0.3s;
+    }
+    nav.scrolled { padding: 12px 0; }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Logo SVG icon (replace with real logo image later) */
+    .logo-icon { width: 48px; height: 48px; }
+    .logo-icon svg { width: 100%; height: 100%; }
+
+    .logo-text { display: flex; flex-direction: column; }
+    .logo-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      font-weight: 900;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      letter-spacing: 0.1em;
+    }
+    .logo-sub {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0; right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta { display: flex; align-items: center; gap: 14px; }
+    .nav-phone {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .nav-phone:hover { color: var(--gold-bright); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--gold-light);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      background: rgba(13,13,13,0.98);
+      border-top: 1px solid var(--border-gold);
+      padding: 20px 24px;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .mobile-menu a:hover { color: var(--gold-light); }
+    .mobile-cta { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      /* Photo locale – fond toit propre */
+      background-image: url('Nouveau logo Entreprise/fond toit propre.png');
+      background-size: cover;
+      background-position: center 50%;
+      filter: brightness(0.35);
+      transform: scale(1.06);
+      transition: transform 10s ease;
+    }
+    #hero:hover .hero-bg { transform: scale(1.00); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(13,13,13,0.92) 35%, rgba(13,13,13,0.2) 100%),
+        linear-gradient(to top,   rgba(13,13,13,0.75) 0%, transparent 55%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 130px 0 90px;
+      max-width: 740px;
+      animation: slideInLeft 0.9s ease both;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200, 146, 42, 0.15);
+      border: 1px solid var(--border-gold);
+      border-radius: 30px;
+      padding: 6px 18px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 28px;
+      animation: fadeIn 1s ease 0.3s both;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--gold-bright);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    .hero-title {
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: var(--text-white);
+      animation: slideInLeft 0.9s ease 0.15s both;
+    }
+    .hero-title span {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-desc {
+      font-size: 1.08rem;
+      color: rgba(245, 240, 232, 0.78);
+      margin-bottom: 44px;
+      max-width: 540px;
+      font-weight: 400;
+      animation: slideInLeft 0.9s ease 0.3s both;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: slideInUp 0.8s ease 0.5s both;
+    }
+
+    /* Pulsing ring around main hero CTA */
+    .btn-hero-cta {
+      position: relative;
+    }
+    .btn-hero-cta .ring {
+      position: absolute;
+      inset: -6px;
+      border-radius: 8px;
+      border: 2px solid rgba(200,146,42,0.4);
+      animation: rippleOut 2s ease-out infinite;
+      pointer-events: none;
+    }
+    .btn-hero-cta .ring2 {
+      animation-delay: 1s;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 44px;
+      margin-top: 68px;
+      flex-wrap: wrap;
+      animation: slideInUp 0.8s ease 0.7s both;
+    }
+    .hero-stat { display: flex; flex-direction: column; gap: 2px; }
+    .hero-stat-num {
+      font-family: 'Cinzel', serif;
+      font-size: 2.1rem;
+      font-weight: 900;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      z-index: 2;
+      animation: bounce 2.8s ease-in-out infinite;
+    }
+    .hero-scroll svg { width: 22px; height: 22px; stroke: var(--gold); }
+
+    /* ===== PROMO BANNER ===== */
+    .promo-banner {
+      background: linear-gradient(90deg, #9A6E1A 0%, #C8922A 25%, #F5C842 50%, #C8922A 75%, #9A6E1A 100%);
+      padding: 14px 0;
+      text-align: center;
+    }
+    .promo-banner p {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.82rem, 2vw, 1.02rem);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #131313;
+    }
+    .promo-banner strong { font-weight: 900; }
+
+    /* ===== SERVICES ===== */
+    #services { padding: 100px 0; background: var(--bg-section); }
+    .services-header { text-align: center; margin-bottom: 60px; }
+    .services-header .divider { margin: 18px auto 0; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.35s, box-shadow 0.35s;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .service-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.35s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px) !important;
+      box-shadow: 0 20px 50px rgba(200, 146, 42, 0.22);
+    }
+    .service-img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.82) saturate(1.1);
+      transition: filter 0.4s, transform 0.5s;
+    }
+    .service-card:hover .service-img {
+      filter: brightness(1) saturate(1.2);
+      transform: scale(1.06);
+    }
+    .service-img-wrap { overflow: hidden; }
+    .service-body { padding: 28px 28px 32px; }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: rgba(200, 146, 42, 0.12);
+      border: 1px solid var(--border-gold);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+      transition: background 0.3s;
+    }
+    .service-card:hover .service-icon { background: rgba(200,146,42,0.22); }
+    .service-icon svg { width: 26px; height: 26px; stroke: var(--gold-light); fill: none; }
+    .service-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      color: var(--text-white);
+      margin-bottom: 10px;
+    }
+    .service-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+    .service-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .service-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.85rem; color: var(--text-muted);
+    }
+    .service-features li::before {
+      content: '';
+      display: inline-block;
+      width: 14px; height: 14px; min-width: 14px;
+      margin-top: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C8922A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    /* ===== WHY US ===== */
+    #why {
+      padding: 100px 0;
+      background: var(--bg-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    #why::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200,146,42,0.07) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+    .why-img-wrap { position: relative; }
+    .why-img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      object-fit: cover;
+      height: 480px;
+      filter: brightness(0.88);
+    }
+    .why-img-badge {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      background: var(--gradient-gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(200,146,42,0.45);
+      animation: ctaGlow 3s ease-in-out infinite;
+    }
+    .why-img-badge-num {
+      font-family: 'Cinzel', serif;
+      font-size: 2.4rem; font-weight: 900;
+      color: #131313; line-height: 1;
+    }
+    .why-img-badge-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(13,13,13,0.7); margin-top: 2px;
+    }
+    .why-list { display: flex; flex-direction: column; gap: 26px; }
+    .why-item { display: flex; gap: 18px; align-items: flex-start; }
+    .why-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem; font-weight: 900;
+      color: var(--gold); line-height: 1; min-width: 36px;
+    }
+    .why-item-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem; color: var(--text-white); margin-bottom: 6px;
+    }
+    .why-item-desc { font-size: 0.88rem; color: var(--text-muted); }
+
+    /* ===== PROCESS ===== */
+    #process { padding: 100px 0; background: var(--bg-section); }
+    .process-header { text-align: center; margin-bottom: 60px; }
+    .process-header .divider { margin: 18px auto 0; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 32px; left: 12.5%; right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .process-step { text-align: center; padding: 0 16px; position: relative; }
+    .step-circle {
+      width: 64px; height: 64px;
+      background: var(--bg-card);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem; font-weight: 900;
+      color: var(--gold-light);
+      position: relative; z-index: 1;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .process-step:hover .step-circle {
+      background: rgba(200,146,42,0.15);
+      box-shadow: 0 0 20px rgba(200,146,42,0.4);
+    }
+    .step-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem; color: var(--text-white); margin-bottom: 10px;
+    }
+    .step-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ===== CTA SECTION ===== */
+    #contact { padding: 110px 0; background: var(--bg-dark); position: relative; overflow: hidden; }
+    .cta-bg {
+      position: absolute; inset: 0;
+      background-image: url('Nouveau logo Entreprise/fond call to action.png');
+      background-size: cover; background-position: center;
+      opacity: 0.07;
+    }
+    .cta-inner {
+      position: relative; z-index: 1;
+      text-align: center;
+      max-width: 700px; margin: 0 auto;
+    }
+    .cta-title { font-size: clamp(1.8rem, 4vw, 3rem); color: var(--text-white); margin-bottom: 18px; }
+    .cta-desc { font-size: 1rem; color: var(--text-muted); margin-bottom: 44px; }
+
+    .cta-btns { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+
+    /* CTA "appel" wrapper with ripple rings */
+    .cta-phone-wrap {
+      position: relative;
+      display: inline-flex;
+    }
+    .cta-phone-wrap .ring {
+      position: absolute;
+      inset: -8px;
+      border-radius: 6px;
+      border: 2px solid rgba(200,146,42,0.35);
+      animation: rippleOut 2.5s ease-out infinite;
+      pointer-events: none;
+    }
+    .cta-phone-wrap .ring2 { animation-delay: 1.25s; }
+
+    .cta-contact {
+      margin-top: 44px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 30px; flex-wrap: wrap;
+    }
+    .cta-contact-item {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text-muted);
+      font-size: 0.9rem; transition: color 0.25s;
+    }
+    .cta-contact-item:hover { color: var(--gold-light); }
+    .cta-contact-item svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0D0D0D;
+      border-top: 1px solid var(--border-gold);
+      padding: 60px 0 30px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(200, 146, 42, 0.15);
+    }
+    .footer-logo-text {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem; font-weight: 900;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 6px;
+    }
+    .footer-brand-sub {
+      font-size: 0.68rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 18px;
+    }
+    .footer-brand-desc { font-size: 0.87rem; color: var(--text-muted); line-height: 1.7; max-width: 280px; }
+    .footer-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem; letter-spacing: 0.12em;
+      color: var(--gold-light); text-transform: uppercase; margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      text-decoration: none; color: var(--text-muted);
+      font-size: 0.88rem; transition: color 0.25s, padding-left 0.25s;
+    }
+    .footer-links a:hover { color: var(--gold-light); padding-left: 6px; }
+    .footer-hours { display: flex; flex-direction: column; gap: 8px; }
+    .footer-hour-row {
+      display: flex; justify-content: space-between;
+      font-size: 0.85rem; color: var(--text-muted); gap: 10px;
+    }
+    .footer-hour-row span:last-child { color: var(--text-white); text-align: right; }
+    .footer-contact-items { display: flex; flex-direction: column; gap: 14px; }
+    .footer-contact-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      text-decoration: none; color: var(--text-muted);
+      font-size: 0.88rem; transition: color 0.25s;
+    }
+    .footer-contact-item:hover { color: var(--gold-light); }
+    .footer-contact-icon {
+      width: 32px; height: 32px; min-width: 32px;
+      background: rgba(200,146,42,0.1);
+      border: 1px solid var(--border-gold);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .footer-contact-icon svg { width: 15px; height: 15px; stroke: var(--gold); fill: none; }
+    .footer-bottom {
+      padding-top: 26px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px;
+    }
+    .footer-copy { font-size: 0.78rem; color: rgba(168,152,128,0.6); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a {
+      font-size: 0.75rem; color: rgba(168,152,128,0.5);
+      text-decoration: none; transition: color 0.25s;
+    }
+    .footer-legal a:hover { color: var(--gold); }
+
+    /* ===== LEGAL MODALS ===== */
+    .legal-modal-box {
+      background: #1A1A1A;
+      border: 1px solid var(--border-gold);
+      border-radius: 14px;
+      padding: 40px 44px 36px;
+      width: 100%;
+      max-width: 780px;
+      max-height: 88vh;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(24px) scale(0.97);
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,146,42,0.15);
+    }
+    .modal-overlay.open .legal-modal-box { transform: translateY(0) scale(1); }
+    .legal-modal-box::-webkit-scrollbar { width: 4px; }
+    .legal-modal-box::-webkit-scrollbar-track { background: #111; }
+    .legal-modal-box::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+    .legal-modal-box h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      color: var(--text-white);
+      margin-bottom: 4px;
+    }
+    .legal-modal-box .legal-date {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      display: block;
+    }
+    .legal-modal-box h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 26px 0 10px;
+    }
+    .legal-modal-box p, .legal-modal-box li {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+    .legal-modal-box ul { padding-left: 18px; margin-top: 6px; }
+    .legal-modal-box li { margin-bottom: 4px; }
+    .legal-modal-box a { color: var(--gold-light); }
+    .legal-modal-box strong { color: var(--text-white); }
+    .legal-divider {
+      height: 1px;
+      background: rgba(200,146,42,0.15);
+      margin: 20px 0;
+    }
+    @media (max-width: 520px) {
+      .legal-modal-box { padding: 28px 18px 24px; }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 960px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .sticky-phone { display: flex; }
+      .why-inner { grid-template-columns: 1fr; }
+      .why-img-wrap { order: -1; }
+      .why-img { height: 320px; }
+      .why-img-badge { right: 10px; bottom: 10px; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+      .process-steps::before { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .cta-btns { flex-direction: column; align-items: center; }
+    }
+
+    /* ===== CONTACT MODAL ===== */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: #1A1A1A;
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      width: 100%; max-width: 560px;
+      padding: 40px 40px 36px;
+      position: relative;
+      transform: translateY(30px) scale(0.97);
+      transition: transform 0.35s cubic-bezier(.34,1.56,.64,1);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,146,42,0.15);
+    }
+    .modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(200,146,42,0.1); border: 1px solid var(--border-gold);
+      border-radius: 50%; width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--gold-light); font-size: 1rem; line-height: 1;
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: rgba(200,146,42,0.25); }
+    .modal-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem; color: var(--text-white);
+      margin-bottom: 6px;
+    }
+    .modal-sub { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 28px; }
+    .form-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+      margin-bottom: 14px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+    .form-input, .form-textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(200,146,42,0.25);
+      border-radius: 6px;
+      padding: 11px 14px;
+      color: var(--text-white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+      width: 100%;
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--gold);
+      background: rgba(200,146,42,0.06);
+    }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(168,152,128,0.5); }
+    .modal-actions { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+    .modal-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 14px; text-align: center; }
+    @media (max-width: 520px) {
+      .modal-box { padding: 28px 20px 24px; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== CONTACT MODAL ===== -->
+  <div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeContact()" aria-label="Fermer">✕</button>
+      <h2 class="modal-title" id="modalTitle">Contactez-nous</h2>
+      <p class="modal-sub">Remplissez le formulaire — nous vous répondons sous 24h.</p>
+      <form id="contactForm" novalidate>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="f-nom">Nom complet *</label>
+            <input class="form-input" type="text" id="f-nom" name="nom" placeholder="Jean Dupont" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-tel">Téléphone</label>
+            <input class="form-input" type="tel" id="f-tel" name="tel" placeholder="06 XX XX XX XX" />
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="f-email">Email *</label>
+            <input class="form-input" type="email" id="f-email" name="email" placeholder="vous@email.fr" required />
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="f-sujet">Sujet</label>
+            <input class="form-input" type="text" id="f-sujet" name="sujet" placeholder="Demande de devis – Nettoyage toiture" />
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="f-msg">Message *</label>
+            <textarea class="form-textarea" id="f-msg" name="message" placeholder="Décrivez votre projet (type de toiture, surface approximative, localisation…)" required></textarea>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary" style="flex:1;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Envoyer le message
+          </button>
+          <a href="tel:0680966459" class="btn btn-outline" style="flex:1; justify-content:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.18 9.81 19.79 19.79 0 0 1 1.08 1.18 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16a2 2 0 0 1 .92.92z"/></svg>
+            06 80 96 64 59
+          </a>
+        </div>
+        <p class="modal-note">Ou écrivez directement à <a href="mailto:mail@dtr-nettoyage-toiture.fr" style="color:var(--gold-light);">mail@dtr-nettoyage-toiture.fr</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== MENTIONS LÉGALES MODAL ===== -->
+  <div class="modal-overlay" id="mentionsModal" role="dialog" aria-modal="true">
+    <div class="legal-modal-box">
+      <button class="modal-close" onclick="closeLegal('mentionsModal')" aria-label="Fermer">✕</button>
+      <h1>Mentions légales</h1>
+      <span class="legal-date">Dernière mise à jour : avril 2025</span>
+
+      <h2>1. Éditeur du site</h2>
+      <p>
+        Le présent site <strong>dtr-nettoyage-toiture.fr</strong> est édité par :<br/>
+        <strong>DTR Nettoyage Toiture</strong> — Auto-entrepreneur<br/>
+        SIRET : <strong>949 076 616 00026</strong><br/>
+        Siège social : Les Arcs-sur-Argens, 83460 Var (France)<br/>
+        Téléphone : <a href="tel:0680966459">06 80 96 64 59</a><br/>
+        E-mail : <a href="mailto:mail@dtr-nettoyage-toiture.fr">mail@dtr-nettoyage-toiture.fr</a>
+      </p>
+      <div class="legal-divider"></div>
+
+      <h2>2. Directeur de la publication</h2>
+      <p>Le directeur de la publication est le gérant de l'entreprise individuelle DTR Nettoyage Toiture.</p>
+      <div class="legal-divider"></div>
+
+      <h2>3. Hébergement</h2>
+      <p>
+        Ce site est hébergé par :<br/>
+        <strong>Hostinger</strong> — UAB "Hostinger", Jolantos g. 7, Vilnius 09202, Lituanie<br/>
+        Site : <a href="https://www.hostinger.fr" target="_blank" rel="noopener">www.hostinger.fr</a>
+      </p>
+      <div class="legal-divider"></div>
+
+      <h2>4. Propriété intellectuelle</h2>
+      <p>L'ensemble des contenus présents sur ce site (textes, images, logos, graphismes) est la propriété exclusive de DTR Nettoyage Toiture ou de ses partenaires, et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle. Toute reproduction, représentation ou utilisation, même partielle, est strictement interdite sans autorisation préalable écrite.</p>
+      <div class="legal-divider"></div>
+
+      <h2>5. Responsabilité</h2>
+      <p>DTR Nettoyage Toiture s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, des erreurs ou omissions peuvent survenir. L'utilisateur est invité à signaler toute anomalie. DTR Nettoyage Toiture ne saurait être tenu responsable de l'utilisation faite de ces informations ni des dommages directs ou indirects pouvant en résulter.</p>
+      <div class="legal-divider"></div>
+
+      <h2>6. Droit applicable</h2>
+      <p>Le présent site est soumis au droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+    </div>
+  </div>
+
+  <!-- ===== POLITIQUE DE CONFIDENTIALITÉ MODAL ===== -->
+  <div class="modal-overlay" id="confidentialiteModal" role="dialog" aria-modal="true">
+    <div class="legal-modal-box">
+      <button class="modal-close" onclick="closeLegal('confidentialiteModal')" aria-label="Fermer">✕</button>
+      <h1>Politique de confidentialité</h1>
+      <span class="legal-date">Dernière mise à jour : avril 2025 — Conforme au RGPD (Règlement UE 2016/679)</span>
+
+      <h2>1. Responsable du traitement</h2>
+      <p>
+        <strong>DTR Nettoyage Toiture</strong> — Auto-entrepreneur<br/>
+        SIRET : 949 076 616 00026 — Les Arcs-sur-Argens, 83460 Var<br/>
+        Contact : <a href="mailto:mail@dtr-nettoyage-toiture.fr">mail@dtr-nettoyage-toiture.fr</a>
+      </p>
+      <div class="legal-divider"></div>
+
+      <h2>2. Données collectées</h2>
+      <p>Dans le cadre de l'utilisation de ce site, nous pouvons être amenés à collecter les données suivantes :</p>
+      <ul>
+        <li>Nom et prénom (via le formulaire de contact)</li>
+        <li>Adresse e-mail et numéro de téléphone</li>
+        <li>Contenu du message (description des travaux souhaités)</li>
+        <li>Données de navigation (adresse IP, pages consultées) via des cookies analytiques éventuels</li>
+      </ul>
+      <div class="legal-divider"></div>
+
+      <h2>3. Finalités du traitement</h2>
+      <p>Les données collectées sont utilisées exclusivement pour :</p>
+      <ul>
+        <li>Répondre à vos demandes de devis et demandes d'information</li>
+        <li>Assurer le suivi de la relation client</li>
+        <li>Améliorer la qualité de nos services</li>
+      </ul>
+      <div class="legal-divider"></div>
+
+      <h2>4. Base légale</h2>
+      <p>Le traitement est fondé sur votre <strong>consentement</strong> (formulaire de contact) et sur l'<strong>intérêt légitime</strong> de DTR Nettoyage Toiture dans le cadre de la relation commerciale.</p>
+      <div class="legal-divider"></div>
+
+      <h2>5. Conservation des données</h2>
+      <p>Vos données personnelles sont conservées pour une durée maximale de <strong>3 ans</strong> à compter du dernier contact, puis supprimées ou archivées conformément aux obligations légales.</p>
+      <div class="legal-divider"></div>
+
+      <h2>6. Partage des données</h2>
+      <p>Vos données ne sont en aucun cas vendues, cédées ou partagées avec des tiers à des fins commerciales. Elles peuvent uniquement être transmises à des prestataires techniques strictement nécessaires au fonctionnement du site, tenus à une obligation de confidentialité.</p>
+      <div class="legal-divider"></div>
+
+      <h2>7. Vos droits</h2>
+      <p>Conformément au RGPD, vous disposez des droits suivants sur vos données :</p>
+      <ul>
+        <li><strong>Droit d'accès</strong> : obtenir une copie de vos données</li>
+        <li><strong>Droit de rectification</strong> : corriger des données inexactes</li>
+        <li><strong>Droit à l'effacement</strong> : demander la suppression de vos données</li>
+        <li><strong>Droit d'opposition</strong> : vous opposer à un traitement</li>
+        <li><strong>Droit à la portabilité</strong> : recevoir vos données dans un format structuré</li>
+      </ul>
+      <p style="margin-top:10px;">Pour exercer ces droits, contactez-nous à <a href="mailto:mail@dtr-nettoyage-toiture.fr">mail@dtr-nettoyage-toiture.fr</a>. En cas de désaccord persistant, vous pouvez saisir la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a>.</p>
+      <div class="legal-divider"></div>
+
+      <h2>8. Cookies</h2>
+      <p>Ce site n'utilise pas de cookies à des fins publicitaires ou de tracking tiers. Des cookies techniques strictement nécessaires au fonctionnement du site peuvent être déposés. Vous pouvez configurer votre navigateur pour refuser les cookies ; cela n'affectera pas votre navigation sur ce site.</p>
+    </div>
+  </div>
+
+  <!-- ===== CGV MODAL ===== -->
+  <div class="modal-overlay" id="cgvModal" role="dialog" aria-modal="true">
+    <div class="legal-modal-box">
+      <button class="modal-close" onclick="closeLegal('cgvModal')" aria-label="Fermer">✕</button>
+      <h1>Conditions Générales de Vente</h1>
+      <span class="legal-date">Dernière mise à jour : avril 2025</span>
+
+      <h2>1. Objet</h2>
+      <p>Les présentes Conditions Générales de Vente (CGV) s'appliquent à toutes les prestations de services proposées par <strong>DTR Nettoyage Toiture</strong> (auto-entrepreneur, SIRET 949 076 616 00026, Les Arcs-sur-Argens, Var) à destination de clients particuliers ou professionnels.</p>
+      <div class="legal-divider"></div>
+
+      <h2>2. Prestations proposées</h2>
+      <p>DTR Nettoyage Toiture propose les prestations suivantes :</p>
+      <ul>
+        <li>Nettoyage et démoussage de toiture</li>
+        <li>Nettoyage de façade</li>
+        <li>Application de traitement hydrofuge et anti-mousse</li>
+        <li>Toute prestation connexe à l'entretien extérieur du bâtiment</li>
+      </ul>
+      <div class="legal-divider"></div>
+
+      <h2>3. Devis et commande</h2>
+      <p>Toute prestation fait l'objet d'un <strong>devis gratuit et sans engagement</strong>, établi après visite ou échange téléphonique. Le devis est valable <strong>30 jours</strong> à compter de sa date d'émission. La commande est considérée comme ferme et définitive dès la signature du devis accompagnée du versement d'un acompte éventuel.</p>
+      <div class="legal-divider"></div>
+
+      <h2>4. Tarifs</h2>
+      <p>Les prix sont indiqués en euros TTC (TVA non applicable — article 293 B du CGI, régime auto-entrepreneur). Ils peuvent être révisés à tout moment ; les tarifs applicables sont ceux en vigueur au moment de l'acceptation du devis. Une remise de <strong>10 %</strong> est accordée sur la première intervention, sur présentation du devis.</p>
+      <div class="legal-divider"></div>
+
+      <h2>5. Modalités de paiement</h2>
+      <p>Le règlement s'effectue :</p>
+      <ul>
+        <li>Par chèque à l'ordre de DTR Nettoyage Toiture</li>
+        <li>Par virement bancaire</li>
+        <li>En espèces (dans les limites légales en vigueur)</li>
+      </ul>
+      <p style="margin-top:8px;">Sauf accord contraire mentionné sur le devis, le paiement est dû à la réception de la facture. Tout retard de paiement entraîne des pénalités de retard au taux légal en vigueur, ainsi qu'une indemnité forfaitaire de recouvrement de 40 €.</p>
+      <div class="legal-divider"></div>
+
+      <h2>6. Exécution des prestations</h2>
+      <p>Les interventions sont réalisées aux dates convenues d'un commun accord, sous réserve des conditions météorologiques. En cas d'intempéries rendant l'intervention dangereuse ou inefficace, DTR Nettoyage Toiture se réserve le droit de reporter le chantier sans pénalité. Le client s'engage à assurer un accès libre et sécurisé au chantier.</p>
+      <div class="legal-divider"></div>
+
+      <h2>7. Garanties et responsabilités</h2>
+      <p>DTR Nettoyage Toiture met en œuvre tous les moyens nécessaires pour réaliser les prestations dans les règles de l'art. La responsabilité de DTR Nettoyage Toiture ne saurait être engagée pour des dommages préexistants à l'intervention ou résultant d'une utilisation anormale des surfaces traitées. En cas de litige, une solution amiable sera recherchée en priorité.</p>
+      <div class="legal-divider"></div>
+
+      <h2>8. Droit de rétractation</h2>
+      <p>Conformément à l'article L. 221-18 du Code de la consommation, pour les contrats conclus à distance ou hors établissement avec un consommateur, celui-ci dispose d'un délai de <strong>14 jours calendaires</strong> pour exercer son droit de rétractation, sans avoir à justifier de motifs. Ce délai court à compter de la signature du devis. La rétractation doit être notifiée par écrit à <a href="mailto:mail@dtr-nettoyage-toiture.fr">mail@dtr-nettoyage-toiture.fr</a>.</p>
+      <div class="legal-divider"></div>
+
+      <h2>9. Médiation</h2>
+      <p>En cas de litige non résolu à l'amiable, le client consommateur peut recourir gratuitement à un médiateur de la consommation. DTR Nettoyage Toiture adhère au service de médiation : <strong>CM2C – Centre de la Médiation de la Consommation de Conciliateurs de Justice</strong> — <a href="https://www.cm2c.net" target="_blank" rel="noopener">www.cm2c.net</a> — 14 rue Saint-Jean, 75017 Paris.</p>
+      <div class="legal-divider"></div>
+
+      <h2>10. Droit applicable et juridiction</h2>
+      <p>Les présentes CGV sont soumises au droit français. Tout litige relèvera de la compétence exclusive des tribunaux du ressort du siège social de DTR Nettoyage Toiture.</p>
+    </div>
+  </div>
+
+  <!-- Sticky Phone CTA (mobile) -->
+  <a href="tel:0680966459" class="sticky-phone" aria-label="Appeler DTR">
+    <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.18 9.81 19.79 19.79 0 0 1 1.08 1.18 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16a2 2 0 0 1 .92.92z"/>
+    </svg>
+  </a>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <img src="logo transp.png" alt="DTR Logo" style="height:56px;width:auto;object-fit:contain;" />
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Pourquoi nous</a></li>
+        <li><a href="#process">Notre méthode</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="tel:0680966459" class="nav-phone">📞 06 80 96 64 59</a>
+        <a href="#contact" class="btn btn-primary btn-static" style="padding:10px 22px;font-size:0.8rem;">Devis Gratuit</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Pourquoi nous</a></li>
+        <li><a href="#process">Notre méthode</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="mobile-cta">
+        <a href="tel:0680966459" class="btn btn-outline">📞 06 80 96 64 59</a>
+        <a href="#contact" class="btn btn-primary btn-static">Devis Gratuit</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">Devis gratuit &amp; sans engagement</div>
+      <h1 class="hero-title">
+        Nettoyage Toiture &amp; Façade<br/>
+        <span>aux Arcs-sur-Argens<br/>et dans le Var</span>
+      </h1>
+      <p class="hero-desc">
+        DTR intervient aux Arcs-sur-Argens et dans tout le Var pour le nettoyage, le démoussage et la protection hydrofuge de votre toiture et de vos façades. Devis gratuit, résultats garantis.
+      </p>
+      <div class="hero-btns">
+        <div class="btn-hero-cta">
+          <div class="ring"></div>
+          <div class="ring ring2"></div>
+          <a href="#contact" class="btn btn-primary btn-static">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.18 9.81 19.79 19.79 0 0 1 1.08 1.18 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16a2 2 0 0 1 .92.92z"/></svg>
+            Devis Gratuit
+          </a>
+        </div>
+        <a href="#services" class="btn btn-outline">Découvrir nos services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">−10%</span>
+          <span class="hero-stat-label">1ère intervention</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">100%</span>
+          <span class="hero-stat-label">Satisfaction client</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">48h</span>
+          <span class="hero-stat-label">Réponse devis</span>
+        </div>
+      </div>
+    </div>
+    <a href="#services" class="hero-scroll" aria-label="Défiler">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+  </section>
+
+  <!-- ===== PROMO BANNER ===== -->
+  <div class="promo-banner">
+    <p>⭐ <strong>–10% SUR VOTRE PREMIÈRE INTERVENTION</strong> — Contactez-nous dès aujourd'hui &nbsp;⭐</p>
+  </div>
+
+  <!-- ===== PROMO CTA BAR ===== -->
+  <div style="background:#181818; border-bottom:1px solid rgba(200,146,42,0.2); padding:22px 0; text-align:center;">
+    <div class="container" style="display:flex; align-items:center; justify-content:center; gap:28px; flex-wrap:wrap;">
+      <p style="font-size:1rem; color:var(--text-muted); font-weight:500;">
+        Vous souhaitez un <strong style="color:var(--text-white);">devis gratuit</strong> pour votre toiture ou façade&nbsp;?
+      </p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+        <a href="tel:0680966459" class="btn btn-primary" style="padding:12px 28px; font-size:0.85rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.18 9.81 19.79 19.79 0 0 1 1.08 1.18 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16a2 2 0 0 1 .92.92z"/></svg>
+          Appelez-nous
+        </a>
+        <a href="#" class="btn btn-outline" style="padding:11px 28px; font-size:0.85rem;" onclick="openContact(event)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Écrivez-nous
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <span class="section-tag">Nos Prestations</span>
+        <h2 class="section-title">Des solutions <span class="gold-text">complètes</span> pour votre toiture</h2>
+        <p class="section-subtitle" style="margin:0 auto;">Entretien, nettoyage et protection, nous prenons en charge tous les aspects de la santé de votre toiture et de vos façades.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="services-grid">
+
+        <!-- Nettoyage Toiture -->
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <!-- Pressure washing a roof – clean tiles after washing -->
+            <img class="service-img"
+              src="Nouveau logo Entreprise/nettoyage toiture section.png"
+              alt="Nettoyage toiture" loading="lazy" />
+          </div>
+          <div class="service-body">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Nettoyage Toiture</h3>
+            <p class="service-desc">Remise à neuf complète de votre toiture grâce à un nettoyage haute pression professionnel. Élimination des salissures, algues, lichens et dépôts accumulés.</p>
+            <ul class="service-features">
+              <li>Nettoyage haute et basse pression</li>
+              <li>Entretien préventif et curatif</li>
+              <li>Résultats visibles immédiatement</li>
+              <li>Préservation de la durée de vie des tuiles</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Nettoyage Façade -->
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <!-- Beautiful house facade exterior -->
+            <img class="service-img"
+              src="Nouveau logo Entreprise/nettoyage façade.png"
+              alt="Nettoyage façade" loading="lazy" />
+          </div>
+          <div class="service-body">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Nettoyage Façade</h3>
+            <p class="service-desc">Restauration de l'éclat de vos façades avec des techniques adaptées à chaque revêtement : pierre, crépi, brique, enduit.</p>
+            <ul class="service-features">
+              <li>Démoussage et dégraissage en profondeur</li>
+              <li>Traitement des taches tenaces</li>
+              <li>Respect des matériaux anciens et modernes</li>
+              <li>Nettoyage sans détérioration</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Traitement Hydrofuge -->
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <!-- Rain water drops protection waterproofing -->
+            <img class="service-img"
+              src="Nouveau logo Entreprise/traitement hydrofuge.png"
+              alt="Traitement hydrofuge" loading="lazy" />
+          </div>
+          <div class="service-body">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Traitement Hydrofuge</h3>
+            <p class="service-desc">Protection longue durée contre l'humidité, les infiltrations et la repousse des mousses. Un investissement durable pour votre patrimoine.</p>
+            <ul class="service-features">
+              <li>Application d'hydrofuge pénétrant</li>
+              <li>Traitement anti-mousse longue durée</li>
+              <li>Protection contre gel et infiltrations</li>
+              <li>Garantie d'efficacité pluriannuelle</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY US ===== -->
+  <section id="why">
+    <div class="container">
+      <div class="why-inner">
+        <div class="why-img-wrap">
+          <img class="why-img"
+            src="avant-apres.jpg"
+            alt="Avant / Après nettoyage toiture DTR" loading="lazy"
+            style="object-position: center center;" />
+          <div class="why-img-badge">
+            <div class="why-img-badge-num">100%</div>
+            <div class="why-img-badge-label">Satisfaction<br/>Client</div>
+          </div>
+        </div>
+        <div class="why-content">
+          <span class="section-tag">Pourquoi nous choisir</span>
+          <h2 class="section-title">Pourquoi <span class="gold-text">DTR Nettoyage Toiture</span>&nbsp;?</h2>
+          <div class="divider"></div>
+          <div class="why-list">
+            <div class="why-item">
+              <span class="why-num">01</span>
+              <div>
+                <h4 class="why-item-title">Devis gratuit & sans engagement</h4>
+                <p class="why-item-desc">Nous nous déplaçons pour évaluer vos besoins sans frais. Transparence totale sur les tarifs avant toute intervention.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <span class="why-num">02</span>
+              <div>
+                <h4 class="why-item-title">Matériel professionnel haut de gamme</h4>
+                <p class="why-item-desc">Équipements adaptés à chaque configuration de toiture pour un résultat irréprochable sans risque pour vos matériaux.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <span class="why-num">03</span>
+              <div>
+                <h4 class="why-item-title">Produits écologiques homologués</h4>
+                <p class="why-item-desc">Traitements respectueux de l'environnement, efficaces contre les mousses et lichens, sans impact sur la végétation.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <span class="why-num">04</span>
+              <div>
+                <h4 class="why-item-title">−10% sur votre première intervention</h4>
+                <p class="why-item-desc">Offre de bienvenue exclusive pour nos nouveaux clients. Profitez d'un tarif préférentiel dès votre premier chantier.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section id="process">
+    <div class="container">
+      <div class="process-header">
+        <span class="section-tag">Notre Méthode</span>
+        <h2 class="section-title">Une intervention <span class="gold-text">en 4 étapes</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-circle">1</div>
+          <h4 class="step-title">Contact & Devis</h4>
+          <p class="step-desc">Appelez-nous ou envoyez un e-mail. Devis personnalisé gratuit sous 48h.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-circle">2</div>
+          <h4 class="step-title">Inspection</h4>
+          <p class="step-desc">Diagnostic complet de votre toiture ou façade pour le meilleur protocole de traitement.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-circle">3</div>
+          <h4 class="step-title">Intervention</h4>
+          <p class="step-desc">Nos techniciens interviennent avec le matériel adapté, dans les délais convenus.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-circle">4</div>
+          <h4 class="step-title">Contrôle qualité</h4>
+          <p class="step-desc">Vérification avec vous et application du traitement hydrofuge de protection finale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA / CONTACT ===== -->
+  <section id="contact">
+    <div class="cta-bg"></div>
+    <div class="container cta-inner">
+      <span class="section-tag">Contactez-nous</span>
+      <h2 class="cta-title">Prêt pour une toiture <span class="gold-text">comme&nbsp;neuve&nbsp;?</span></h2>
+      <p class="cta-desc">Demandez votre devis gratuit dès aujourd'hui. Réponse sous 48h, sans engagement.<br/>N'oubliez pas votre remise de <strong style="color:var(--gold-light)">−10%</strong> pour une première intervention !</p>
+
+      <div class="cta-btns">
+        <div class="cta-phone-wrap">
+          <div class="ring"></div>
+          <div class="ring ring2"></div>
+          <a href="tel:0680966459" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.18 9.81 19.79 19.79 0 0 1 1.08 1.18 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16a2 2 0 0 1 .92.92z"/></svg>
+            06 80 96 64 59
+          </a>
+        </div>
+        <a href="#" class="btn btn-outline" onclick="openContact(event)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Envoyer un message
+        </a>
+      </div>
+
+      <div class="cta-contact">
+        <a href="tel:0680966459" class="cta-contact-item">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.18 9.81 19.79 19.79 0 0 1 1.08 1.18 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16a2 2 0 0 1 .92.92z"/></svg>
+          06 80 96 64 59
+        </a>
+        <a href="mailto:mail@dtr-nettoyage-toiture.fr" class="cta-contact-item">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          mail@dtr-nettoyage-toiture.fr
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <img src="logo transp.png" alt="DTR Logo" style="height:52px;width:auto;object-fit:contain;margin-bottom:10px;display:block;" />
+          <div class="footer-brand-sub">Nettoyage · Démoussage · Hydrofuge</div>
+          <p class="footer-brand-desc">Spécialiste du nettoyage de toiture et de façade. Interventions soignées, matériel professionnel, résultats garantis.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="#hero">Accueil</a></li>
+            <li><a href="#services">Nos services</a></li>
+            <li><a href="#why">Pourquoi nous</a></li>
+            <li><a href="#process">Notre méthode</a></li>
+            <li><a href="#contact">Devis gratuit</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Horaires</div>
+          <div class="footer-hours">
+            <div class="footer-hour-row"><span>Lun – Ven</span><span>8h – 18h</span></div>
+            <div class="footer-hour-row"><span>Samedi</span><span>9h – 16h</span></div>
+            <div class="footer-hour-row"><span>Dimanche</span><span>Fermé</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Contact</div>
+          <div class="footer-contact-items">
+            <a href="tel:0680966459" class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.18 9.81 19.79 19.79 0 0 1 1.08 1.18 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16a2 2 0 0 1 .92.92z"/></svg>
+              </div>
+              <span>06 80 96 64 59</span>
+            </a>
+            <a href="mailto:mail@dtr-nettoyage-toiture.fr" class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <span>mail@dtr-nettoyage-toiture.fr</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2024 DTR Nettoyage Toiture. Tous droits réservés.</p>
+        <div class="footer-legal">
+          <a href="#" onclick="openLegal('mentionsModal');return false;">Mentions légales</a>
+          <a href="#" onclick="openLegal('confidentialiteModal');return false;">Politique de confidentialité</a>
+          <a href="#" onclick="openLegal('cgvModal');return false;">CGV</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    // Scroll reveal for service cards + other elements
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => entry.target.classList.add('visible'), delay);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.service-card').forEach((el, i) => {
+      el.dataset.delay = i * 120;
+      revealObserver.observe(el);
+    });
+
+    // Why items reveal
+    const whyObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateX(0)';
+          }, i * 100);
+          whyObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.why-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateX(30px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      whyObserver.observe(el);
+    });
+
+    // Process steps reveal
+    const stepObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          stepObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.process-step').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = `opacity 0.5s ease ${i * 0.15}s, transform 0.5s ease ${i * 0.15}s`;
+      stepObserver.observe(el);
+    });
+
+    // ── LEGAL MODALS ─────────────────────────────────────────────────
+    function openLegal(id) {
+      document.getElementById(id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLegal(id) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    ['mentionsModal','confidentialiteModal','cgvModal'].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('click', function(e) { if (e.target === this) closeLegal(id); });
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        ['mentionsModal','confidentialiteModal','cgvModal'].forEach(id => {
+          if (document.getElementById(id).classList.contains('open')) closeLegal(id);
+        });
+      }
+    });
+
+    // ── CONTACT MODAL ────────────────────────────────────────────────
+    function openContact(e) {
+      if (e) e.preventDefault();
+      document.getElementById('contactModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeContact() {
+      document.getElementById('contactModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeContact(); });
+
+    document.getElementById('contactModal').addEventListener('click', function(e) {
+      if (e.target === this) closeContact();
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nom     = this.nom.value.trim();
+      const email   = this.email.value.trim();
+      const tel     = this.tel.value.trim();
+      const sujet   = this.sujet.value.trim() || 'Demande de devis';
+      const message = this.message.value.trim();
+      const body    = encodeURIComponent(
+        `Nom : ${nom}\nTéléphone : ${tel}\n\n${message}`
+      );
+      window.location.href =
+        `mailto:mail@dtr-nettoyage-toiture.fr?subject=${encodeURIComponent(sujet)}&body=${body}`;
+      setTimeout(closeContact, 800);
+    });
+
+    // ── SHINY BUTTON ENGINE ──────────────────────────────────────────
+    // Replicates framer-motion ShinyButton: sweeping shine on primary
+    // and sweeping gold border on outline — no React / no framer needed.
+    (function () {
+      const SWEEP_MS   = 1300;  // duration of one shine pass
+      const PAUSE_MS   = 2000;  // pause between passes
+      const TOTAL_MS   = SWEEP_MS + PAUSE_MS;
+      let   startTime  = null;
+
+      // Ease-in-out (matches framer spring feel)
+      function eio(t) { return t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t; }
+
+      function frame(ts) {
+        if (!startTime) startTime = ts;
+        const elapsed = (ts - startTime) % TOTAL_MS;
+        const x = elapsed < SWEEP_MS
+          ? 100 - eio(elapsed / SWEEP_MS) * 220   // 100% → -120%
+          : -120;                                   // parked off-screen
+
+        const val = x.toFixed(2) + '%';
+        document.querySelectorAll('.btn-primary:not(.btn-static):not([href^="tel:"]), .btn-outline:not(.btn-static):not([href^="tel:"])').forEach(b => {
+          b.style.setProperty('--x', val);
+        });
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+
+      // Ripple on click (spring-tap feel like whileTap scale:0.95)
+      document.querySelectorAll('.btn-primary').forEach(btn => {
+        btn.addEventListener('click', function () {
+          this.classList.remove('rippling');
+          void this.offsetWidth; // reflow
+          this.classList.add('rippling');
+          setTimeout(() => this.classList.remove('rippling'), 560);
+        });
+      });
+    })();
+  </script>
+
+
+</body>
+</html>
